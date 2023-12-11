@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <!--    libs for stomp and sockjs-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <!--    end libs for stomp and sockjs-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <title></title>
+    <style>
+        #login{
+            position: relative;
+
+            top: 226px;
+        }
+        #createGame{
+            position: relative;
+
+            top: 226px;
+        }
+        #game_id{
+            position: relative;
+
+            top: 226px;
+        }
+        #connectGame{
+            position: relative;
+
+            top: 226px;
+        }
+        #gameIdText{
+            position: relative;
+
+            top: 300px;
+        }
+        #yourColour{
+            position: relative;
+
+            top: 300px;
+        }
+        #main{
+            width:1000px;
+            float:left;
+        }
+
+        .pawns{
+            width:30px;
+            height:30px;
+            border-radius:20px;
+            position:absolute;
+        }
+        #board{
+            background:url(Images/board.gif) no-repeat;
+            background-size:cover;
+            width:650px;
+            height:550px;
+            float:left;
+            margin-top:8px;
+        }
+        #uselesstext1{
+            float:left;
+            padding-left:10px;
+            padding-right:10px;
+        }
+        footer{
+            font-size:larger;
+            color:darkred;
+
+        }
+    </style>
+    <script src="js/ludoo.js"></script>
+</head>
+<body>
+<div id="main">
+    <div id="board"></div>
+    <input id="login" placeholder="Place a login here">
+    <button id="createGame" onclick="create_game()">Create a new game</button>
+    <input id="game_id" placeholder="Place GameId here">
+    <button id="connectGame" onclick="connect_game()">Connect to Game</button>
+
+    <div id="gameIdText"></div>
+    <div id="yourColour"></div>
+
+
+
+    <div id="dice" onclick="rollDice()" style="background-image:url(Images/dice.gif);background-size:contain; width:150px;height:150px; float:left;"></div>
+    <!-- red pawns  start top 28 left 318-->
+    <div class="pawns" id="redpawn1"    onclick="movePawn('red',1)"       style="background-color:red;top:149px;left:442px;"></div>
+    <div class="pawns" id="redpawn2"    onclick="movePawn('red',2)"       style="background-color:red;top:102px;left:395px;"></div>
+    <div class="pawns" id="redpawn3"    onclick="movePawn('red',3)"       style="background-color:red;top:55px;left:442px;"></div>
+    <div class="pawns" id="redpawn4"    onclick="movePawn('red',4)"       style="background-color:red;top:102px;left:490px;"></div>
+
+    <!-- yellow pawns  start top 523 left 218-->
+    <div class="pawns" id="yellowpawn1" onclick="movePawn('yellow',1)"    style="background-color:yellow;top:451px;left:47px;"></div>
+    <div class="pawns" id="yellowpawn2" onclick="movePawn('yellow',2)"    style="background-color:yellow;top:451px;left:140px;"></div>
+    <div class="pawns" id="yellowpawn3" onclick="movePawn('yellow',3)"    style="background-color:yellow;top:404px;left:93px;"></div>
+    <div class="pawns" id="yellowpawn4" onclick="movePawn('yellow',4)"    style="background-color:yellow;top:498px;left:93px;"></div>
+
+    <!-- green pawns  start top 227 left 22-->
+    <div class="pawns" id="greenpawn1"  onclick="movePawn('green',1)"     style="background-color:green;top:149px;left:93px;"></div>
+    <div class="pawns" id="greenpawn2"  onclick="movePawn('green',2)"     style="background-color:green;top:102px;left:140px;"></div>
+    <div class="pawns" id="greenpawn3"  onclick="movePawn('green',3)"     style="background-color:green;top:55px;left:93px;"></div>
+    <div class="pawns" id="greenpawn4"  onclick="movePawn('green',4)"     style="background-color:green;top:102px;left:47px;"></div>
+
+    <!-- blue pawns  start top 326 left 515-->
+    <div class="pawns" id="bluepawn1"   onclick="movePawn('blue',1)"      style="background-color:blue;top:451px;left:490px;"></div>
+    <div class="pawns" id="bluepawn2"   onclick="movePawn('blue',2)"      style="background-color:blue;top:451px;left:395px;"></div>
+    <div class="pawns" id="bluepawn3"   onclick="movePawn('blue',3)"      style="background-color:blue;top:404px;left:442px;"></div>
+    <div class="pawns" id="bluepawn4"   onclick="movePawn('blue',4)"      style="background-color:blue;top:498px;left:442px;"></div>
+
+
+    <h4 id="uselesstext1">It`s </h4><h3 id="player" style="float:left; color:red">red</h3><h4 id="uselesstext2">s turn</h4>
+    <p id="badtext" style="float:left;"></p>
+</div>
+<footer title="Ludoo" id="copyright">Mensch ärgere dich nicht</footer>
+</body>
+</html>
